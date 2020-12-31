@@ -11,5 +11,5 @@ class CampaignHero extends Model
 
     protected $table = 'campaign_hero';
 
-    protected $fillable = ['campaign_id', 'hero_id'];
+    protected $fillable = ['campaign_id', 'hero_id', 'optional'];
 }

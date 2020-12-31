@@ -19,7 +19,8 @@ class CampaignsHeroesImport implements ToModel, WithValidation, SkipsOnFailure
     {
         return new CampaignHero([
             'campaign_id' => $row[0],
-            'hero_id' => $row[1]
+            'hero_id' => $row[1],
+            'optional' => $row[2]
         ]);
     }
 

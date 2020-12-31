@@ -2,17 +2,24 @@
 
     @foreach($campaigns as $campaign)
 
-        <button wire:click="select({{ $campaign->id }})" @if($campaign->id === $selected) class="campaign-selected" @endif>{{$campaign->name}}</button>
+        <button wire:click="select_campaign({{ $campaign->id }})" @if($campaign->id === $selected_campaign) class="campaign-selected" @endif>{{$campaign->name}}</button>
 
     @endforeach
 
-    @if($selected)
+    @if($selected_campaign)
 
-        @foreach($heroes as $hero)
+        @foreach($designated_heroes as $hero)
 
-            <img class="portrait" src={{ asset('portraits/'. $hero->firstname .'.webp') }}>
+            <img class="portrait selected" src={{ asset('portraits/'. $hero .'.webp') }}>
 
         @endforeach
+
+        @foreach($recruitable_heroes as $hero)
+
+            <img wire:click="select_hero('{{ $hero }}')" @if(in_array($hero, $selected_heroes)) class="portrait selected" @else class="portrait unselected" @endif src={{ asset('portraits/'. $hero .'.webp') }}>
+
+        @endforeach
+
     @endif
 
 </div>

@@ -33,6 +33,6 @@ class HeroesImport implements ToModel, WithValidation, SkipsOnFailure
 
     public function onFailure(Failure ...$failures)
     {
-        // Handle the failures how you'd like.
+        //this way the data import ignores empty rows
     }
 }
