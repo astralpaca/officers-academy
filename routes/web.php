@@ -14,5 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    return view('overview');
+})->name('home');
+
+Route::get('/campaigns', function() {
     return view('campaigns.show');
-});
+})->name('campaigns');

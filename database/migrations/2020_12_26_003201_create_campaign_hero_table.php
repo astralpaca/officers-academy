@@ -15,13 +15,15 @@ class CreateCampaignHeroTable extends Migration
     {
         Schema::create('campaign_hero', function (Blueprint $table) {
             $table->id();
-            
+
             $table->unsignedBigInteger('campaign_id');
             $table->foreign('campaign_id')->references('id')->on('campaigns');
-            
+
             $table->unsignedBigInteger('hero_id');
             $table->foreign('hero_id')->references('id')->on('heroes');
-            
+
+            $table->boolean('optional')->default(false);
+
             $table->timestamps();
         });
     }
