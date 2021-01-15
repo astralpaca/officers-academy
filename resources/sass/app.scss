@@ -1,0 +1,26 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+.portrait {
+    width: 150px;
+    border: 1px solid black;
+    margin: 2px;
+}
+
+.selected {
+    background: turquoise;
+}
+
+.unselected {
+    opacity: 0.5;
+}
+
+.clickable {
+    cursor: pointer;
+}
