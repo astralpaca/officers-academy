@@ -7,6 +7,32 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+#header {
+    width: 100vw;
+    height: 60px;
+    background-color: #227dc7;
+    margin-bottom: 50px;
+}
+
+#header img {
+    height: 50px;
+    margin: 5px 50px;
+}
+
+#header h1 {
+    width: 100%;
+    margin: auto 0px;
+    color: white;
+    text-transform: uppercase;
+}
+
+#session-code {
+    background-color: #4aa0e6;
+    margin: auto 0px;
+    height: 100%;
+    color: white;
+}
+
 .portrait {
     width: 150px;
     border: 1px solid black;
