@@ -16,6 +16,10 @@ class CreateMemorycardsTable extends Migration
         Schema::create('memorycards', function (Blueprint $table) {
             $table->id();
             $table->char('code', 6);
+
+            $table->unsignedBigInteger('campaign_id')->nullable();
+            $table->foreign('campaign_id')->references('id')->on('campaigns');
+
             $table->timestamps();
         });
     }
