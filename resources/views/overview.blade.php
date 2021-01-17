@@ -6,7 +6,7 @@
 
         <a href="{{ route('campaigns') }}" class="btn btn-secondary">Select heroes</a>
 
-        <a href="{{ route('session.show') }}" class="btn btn-secondary">Manage session</a>
+        <a href="{{ route('memorycard.show') }}" class="btn btn-secondary">Manage save file</a>
 
     </div>
 

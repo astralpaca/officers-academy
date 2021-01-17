@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SessionController;
+use App\Http\Controllers\MemoryCardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +18,9 @@ Route::get('/', function () {
     return view('overview');
 })->name('home');
 
-Route::get('/session', [SessionController::class, 'show'])->name('session.show');
-Route::post('/session', [SessionController::class, 'create'])->name('session.create');
-Route::put('/session', [SessionController::class, 'load'])->name('session.load');
+Route::get('/memorycards', [MemoryCardController::class, 'show'])->name('memorycard.show');
+Route::post('/memorycards', [MemoryCardController::class, 'create'])->name('memorycard.create');
+Route::put('/memorycards', [MemoryCardController::class, 'load'])->name('memorycard.load');
 
 Route::get('/campaigns', function() {
     return view('campaigns.show');
