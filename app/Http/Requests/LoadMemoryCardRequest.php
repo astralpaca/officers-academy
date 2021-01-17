@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SessionLoadRequest extends FormRequest
+class LoadMemoryCardRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class SessionLoadRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -36,9 +36,9 @@ class SessionLoadRequest extends FormRequest
     public function messages()
     {
         return [
-            'code.required' => 'Session code is required',
-            'code.min' => 'Session code should contain 6 characters',
-            'code.max' => 'Session code should contain 6 characters',
+            'code.required' => 'Save code is required',
+            'code.min' => 'Save code should contain 6 characters',
+            'code.max' => 'Save code should contain 6 characters',
         ];
     }
 }

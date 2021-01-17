@@ -2,42 +2,42 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Session;
+use App\Models\MemoryCard;
 use Illuminate\Http\Request;
 use Illuminate\Support\MessageBag;
-use App\Http\Requests\SessionLoadRequest;
+use App\Http\Requests\LoadMemoryCardRequest;
 
-class SessionController extends Controller
+class MemoryCardController extends Controller
 {
     public function show(Request $request){
         if( $request->session()->has('code') ){
             $code = $request->session()->get('code');
-            return view('sessions.show')
+            return view('memorycards.show')
                 ->with('code', $code);
         } else {
-            return view('sessions.show');
+            return view('memorycards.show');
         }
     }
 
     public function create(Request $request){
         $code = $this->generateRandomString(6);
-        while(Session::exists($code)){
+        while(MemoryCard::exists($code)){
             $code = $this->generateRandomString(6);
         }
-        Session::create(['code' => $code]);
+        MemoryCard::create(['code' => $code]);
         $request->session()->put('code', $code);
-        return view('sessions.show')
+        return view('memorycards.show')
             ->with('code', $code);
     }
 
-    public function load(SessionLoadRequest $request, MessageBag $message_bag){
+    public function load(LoadMemoryCardRequest $request, MessageBag $message_bag){
         $code = $request->input('code');
-        if(! Session::exists($code)){
-            $message_bag->add('code', 'The session code does not exist');
-            return redirect('/session')->withErrors($message_bag);
+        if(! MemoryCard::exists($code)){
+            $message_bag->add('code', 'The save file does not exist');
+            return redirect('/memorycards')->withErrors($message_bag);
         } else {
             $request->session()->put('code', $code);
-            return redirect('/session');
+            return redirect('/memorycards');
         }
     }
 
