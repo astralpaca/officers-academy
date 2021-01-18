@@ -30,6 +30,16 @@ class MemoryCardController extends Controller
             ->with('code', $code);
     }
 
+    private function generateRandomString($length = 10) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
+
     public function load(LoadMemoryCardRequest $request, MessageBag $message_bag){
         $code = $request->input('code');
         if(! MemoryCard::exists($code)){
@@ -39,15 +49,5 @@ class MemoryCardController extends Controller
             $request->session()->put('code', $code);
             return redirect('/memorycards');
         }
-    }
-
-    private function generateRandomString($length = 10) {
-        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $charactersLength = strlen($characters);
-        $randomString = '';
-        for ($i = 0; $i < $length; $i++) {
-            $randomString .= $characters[rand(0, $charactersLength - 1)];
-        }
-        return $randomString;
     }
 }

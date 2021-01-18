@@ -2,7 +2,7 @@
 
     <div class="w-auto d-flex mt-3 pb-3 border-bottom">
         <a href="{{ route('home') }}" class="btn btn-outline-secondary flex-grow-1 m-1">Back</a>
-        <button class="btn btn-primary flex-grow-1 m-1">Save</button>
+        <button  wire:click="save()" class="btn btn-primary flex-grow-1 m-1">Save</button>
     </div>
 
     <div class="w-auto d-flex mt-3 mb-3">
@@ -18,8 +18,8 @@
             <legend  class="w-auto p-2">Designated Heroes</legend>
 
             <div class="w-auto d-flex justify-content-start flex-wrap">
-                @foreach($designated_heroes as $hero)
-                    <img class="portrait selected" src={{ asset('portraits/'. $hero .'.webp') }}>
+                @foreach($designated_heroes as $hero_name)
+                    <img class="portrait selected" src={{ asset('portraits/'. $hero_name .'.webp') }}>
                 @endforeach
             </div>
 
@@ -30,8 +30,8 @@
             <legend  class="w-auto p-2">Recruitable Heroes</legend>
 
             <div class="w-auto d-flex justify-content-start flex-wrap">
-                @foreach($recruitable_heroes as $hero)
-                    <img wire:click="select_hero('{{ $hero }}')" class="portrait clickable {{ in_array($hero, $selected_heroes) ? 'selected' : 'unselected' }}" src={{ asset('portraits/'. $hero .'.webp') }}>
+                @foreach($recruitable_heroes as $hero_id => $hero_name)
+                    <img wire:click="select_hero({{ $hero_id }})" class="portrait clickable {{ in_array($hero_id, $selected_heroes) ? 'selected' : 'unselected' }}" src={{ asset('portraits/'. $hero_name .'.webp') }}>
                 @endforeach
             </div>
 
